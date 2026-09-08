@@ -121,6 +121,10 @@ Notebook otomatis membaca ZIP dari `data/raw/`, menyimpan dataset gabungan ke `d
 - [Analisis sensitivitas](reports/hasil_analisis_sensitivitas.csv)
 - [Audit sumber data](reports/audit_sumber_data.csv)
 
+## Sumber data
+
+Seluruh indikator diunduh dari tabel statistik resmi [BPS Provinsi Jawa Tengah](https://jateng.bps.go.id/) untuk periode 2020–2024. Daftar URL tabel per indikator dan tanggal akses tersedia di [dokumentasi data](data/README.md#sumber-data-bps).
+
 ## Keterbatasan
 
 - Dataset hanya mencakup lima tahun dan satu provinsi.
@@ -130,7 +134,7 @@ Notebook otomatis membaca ZIP dari `data/raw/`, menyimpan dataset gabungan ke `d
 
 ## Lisensi dan data
 
-Kode dan dokumentasi proyek ini menggunakan [MIT License](LICENSE). Data mentah bersumber dari publikasi BPS dan disertakan untuk keperluan analisis akademik. Detail penempatan data dapat dilihat di [data/README.md](data/README.md).
+Kode dan dokumentasi proyek ini menggunakan [MIT License](LICENSE). Data mentah bersumber dari tabel statistik BPS dan disertakan untuk keperluan analisis akademik; hak atas data tetap mengikuti ketentuan sumber. Detail sumber dan penempatan data dapat dilihat di [data/README.md](data/README.md).
 
 ## Kontak
 
