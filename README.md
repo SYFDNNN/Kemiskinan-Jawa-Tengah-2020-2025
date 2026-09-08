@@ -1,89 +1,96 @@
-# Pemodelan Kemiskinan Jawa Tengah 2020–2024
+# Pemodelan Kemiskinan Jawa Tengah 2020–2025
 
-Analisis data dan machine learning untuk memodelkan persentase penduduk miskin pada 35 kabupaten/kota di Jawa Tengah menggunakan data tahun 2020–2024.
+Analisis data panel kabupaten/kota dan perbandingan Multiple Linear Regression dengan Random Forest untuk memodelkan persentase penduduk miskin di Jawa Tengah.
 
-[![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white)](https://www.python.org/)
-[![Jupyter Notebook](https://img.shields.io/badge/Jupyter-Notebook-F37626?logo=jupyter&logoColor=white)](https://jupyter.org/)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Python](https://img.shields.io/badge/Python-3.12-3776AB?logo=python&logoColor=white)](https://www.python.org/)
+[![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-F37626?logo=jupyter&logoColor=white)](https://jupyter.org/)
+[![Data](https://img.shields.io/badge/Data-BPS%20Jawa%20Tengah-1F6E43)](https://jateng.bps.go.id/)
+[![License](https://img.shields.io/badge/Code%20License-MIT-green.svg)](LICENSE)
 
-## Ringkasan proyek
+## Ringkasan
 
-Proyek ini membandingkan tiga pendekatan prediksi:
+Penelitian menggunakan 210 observasi dari 35 kabupaten/kota selama 2020–2025. Target penelitian adalah persentase penduduk miskin, sedangkan prediktornya mencakup umur harapan hidup, harapan lama sekolah, rata-rata lama sekolah, pengeluaran per kapita disesuaikan, dan tingkat pengangguran terbuka.
 
-1. Dummy Baseline sebagai pembanding sederhana.
-2. Multiple Linear Regression untuk melihat hubungan linear antarvariabel.
-3. Random Forest Regressor untuk menangkap pola non-linear dan interaksi fitur.
+Desain evaluasi mengikuti urutan waktu:
 
-Data tahun 2020–2023 digunakan sebagai data latih dan tahun 2024 dikunci sebagai data uji akhir. Strategi pemisahan temporal ini dipilih agar evaluasi lebih mendekati skenario prediksi tahun berikutnya.
+- Data latih dan EDA: 2020–2024, sebanyak 175 observasi.
+- Tuning Random Forest: expanding-year validation dengan tahun validasi 2021, 2022, 2023, dan 2024.
+- Data uji akhir yang dikunci: 2025, sebanyak 35 observasi.
+
+Pemisahan temporal mencegah informasi tahun 2025 memengaruhi EDA, tuning, atau pemilihan model.
 
 ## Hasil utama
 
-Random Forest memberikan performa terbaik pada data uji tahun 2024:
+| Model | MAE | CI 95% MAE | RMSE | R² |
+|---|---:|---:|---:|---:|
+| **Random Forest** | **1,099** | **0,802–1,419** | **1,442** | **0,731** |
+| Multiple Linear Regression | 1,731 | 1,316–2,182 | 2,158 | 0,398 |
+| Dummy Baseline | 2,644 | 2,043–3,259 | 3,167 | -0,297 |
 
-| Model | MAE | RMSE | R² |
-|---|---:|---:|---:|
-| **Random Forest** | **1.0700** | **1.3392** | **0.8210** |
-| Multiple Linear Regression | 1.9047 | 2.3243 | 0.4608 |
-| Dummy Baseline | 2.6938 | 3.2455 | -0.0514 |
+Random Forest menghasilkan MAE 0,634 poin persentase lebih rendah daripada MLR. Bootstrap berpasangan memberikan CI 95% sebesar 0,267–0,965 untuk selisih tersebut, sehingga keunggulan MAE Random Forest konsisten pada resampling 35 wilayah uji.
 
-### Temuan penting
+![Perbandingan MAE model](reports/figures/04_perbandingan_mae_model.png)
 
-- Random Forest menghasilkan error paling rendah dan mampu menjelaskan sekitar 82,1% variasi target pada data uji 2024.
-- Kedua model machine learning mengungguli Dummy Baseline.
-- Evaluasi dilakukan pada 35 kabupaten/kota di tahun 2024, sehingga hasil perlu dibaca sebagai evaluasi prediktif pada dataset ini—bukan sebagai bukti hubungan sebab-akibat.
+![Nilai aktual dan prediksi 2025](reports/figures/05_aktual_vs_prediksi_2025.png)
 
-## Variabel yang digunakan
+## Interpretasi yang bertanggung jawab
 
-Target yang diprediksi adalah `persentase_penduduk_miskin`. Prediktornya adalah:
+- Random Forest memiliki performa prediktif terbaik pada holdout 2025.
+- Diagnostik MLR menunjukkan penyimpangan normalitas residual (Shapiro–Wilk p = 0,031) dan heteroskedastisitas (Breusch–Pagan p = 0,009).
+- Inferensi koefisien MLR karena itu dilaporkan menggunakan standard error cluster-robust menurut kabupaten/kota.
+- HLS dan RLS memiliki VIF di atas 5; keduanya dipertahankan sesuai kerangka konseptual dan diuji kembali melalui analisis sensitivitas.
+- Seluruh hasil adalah hubungan prediktif/asosiatif, bukan bukti hubungan sebab-akibat.
 
-- `uhh` — umur harapan hidup
-- `hls` — harapan lama sekolah
-- `rls` — rata-rata lama sekolah
-- `pengeluaran_per_kapita_disesuaikan` — pengeluaran per kapita disesuaikan
-- `tpt` — tingkat pengangguran terbuka
+## Variabel penelitian
 
-Garis kemiskinan dan jumlah penduduk miskin tidak digunakan sebagai prediktor karena berpotensi terlalu dekat secara definisi dengan target.
+| Peran | Variabel | Satuan |
+|---|---|---|
+| Target | Persentase penduduk miskin | Persen |
+| Prediktor | Umur harapan hidup (UHH) | Tahun |
+| Prediktor | Harapan lama sekolah (HLS) | Tahun |
+| Prediktor | Rata-rata lama sekolah (RLS) | Tahun |
+| Prediktor | Pengeluaran per kapita disesuaikan | Ribu rupiah/orang/tahun |
+| Prediktor | Tingkat pengangguran terbuka (TPT) | Persen |
 
-## Metodologi
+Garis kemiskinan dan jumlah penduduk miskin tidak dipakai sebagai prediktor karena terlalu dekat secara definisi dengan target.
 
-1. Membaca enam ZIP data indikator BPS.
-2. Menstandarkan nama variabel, kode wilayah, dan tahun.
-3. Menghapus baris agregat Provinsi Jawa Tengah (`3300`).
-4. Menggabungkan data berdasarkan `kode_wilayah` dan `tahun`.
-5. Memvalidasi 175 observasi: 35 wilayah × 5 tahun.
-6. Melakukan exploratory data analysis pada data latih 2020–2023.
-7. Melatih dan membandingkan Dummy Baseline, Multiple Linear Regression, dan Random Forest.
-8. Mengevaluasi prediksi pada data uji tahun 2024 menggunakan MAE, RMSE, dan R².
-9. Menganalisis koefisien, permutation importance, dan sensitivitas model.
+## Tahapan penelitian
 
-## Isi repository
+1. Membaca enam ZIP sumber BPS tanpa mengubah data mentah.
+2. Menstandarkan kode dan nama 35 kabupaten/kota menggunakan crosswalk wilayah BPS.
+3. Menghapus agregat Provinsi Jawa Tengah (`3300`).
+4. Menggabungkan enam indikator berdasarkan `kode_wilayah` dan `tahun` dengan validasi relasi satu-ke-satu.
+5. Mengaudit cakupan tahun, missing value, duplikasi, jumlah wilayah, dan checksum SHA-256 sumber.
+6. Melakukan EDA, analisis tren, korelasi, dan VIF hanya pada data latih.
+7. Membandingkan Dummy Baseline, MLR, dan Random Forest pada holdout 2025.
+8. Menghitung CI bootstrap MAE, permutation importance, diagnostik MLR, dan analisis sensitivitas.
+
+## Struktur repository
 
 ```text
-kemiskinan-jawa-tengah/
+Kemiskinan-Jawa-Tengah-2020-2024/
 ├── README.md
 ├── notebooks/
 │   └── pemodelan_kemiskinan_jateng.ipynb
 ├── data/
-│   ├── raw/                  # ZIP sumber data BPS
+│   ├── raw/                         # Enam ZIP BPS 2020–2025
 │   ├── processed/
-│   │   └── kemiskinan_jateng_2020_2024.csv
-│   └── README.md
+│   │   └── kemiskinan_jateng_2020_2025.csv
+│   └── README.md                    # Sumber, data dictionary, dan validasi
 ├── reports/
+│   ├── figures/                     # Delapan figur PNG 300 dpi
+│   ├── README.md                    # Indeks artefak hasil
 │   ├── model_evaluation.md
-│   ├── hasil_perbandingan_model.csv
-│   ├── prediksi_kemiskinan_2024.csv
-│   ├── koefisien_terstandar_mlr.csv
-│   ├── permutation_importance_random_forest.csv
-│   ├── hasil_analisis_sensitivitas.csv
-│   └── audit_sumber_data.csv
+│   └── *.csv                        # Tabel siap pakai untuk Bab IV
 ├── requirements.txt
 ├── .gitignore
+├── .gitattributes
 └── LICENSE
 ```
 
-## Menjalankan proyek
+Nama repository GitHub masih memakai akhiran `2020-2024` agar URL lama tetap berfungsi, sedangkan seluruh data, analisis, dan dokumentasi di dalamnya telah diperbarui sampai 2025.
 
-Pastikan Python 3.10 atau lebih baru sudah terpasang.
+## Menjalankan analisis
 
 ```bash
 git clone https://github.com/SYFDNNN/Kemiskinan-Jawa-Tengah-2020-2024.git
@@ -91,7 +98,7 @@ cd Kemiskinan-Jawa-Tengah-2020-2024
 python -m venv .venv
 ```
 
-Aktifkan environment:
+Aktifkan environment dan instal dependensi:
 
 ```bash
 # Windows PowerShell
@@ -99,43 +106,37 @@ Aktifkan environment:
 
 # Linux/macOS
 source .venv/bin/activate
+
+pip install -r requirements.txt
 ```
 
-Instal dependensi dan jalankan notebook dari root repository:
+Jalankan notebook dari root repository:
 
 ```bash
-pip install -r requirements.txt
 jupyter notebook notebooks/pemodelan_kemiskinan_jateng.ipynb
 ```
 
-Notebook otomatis membaca ZIP dari `data/raw/`, menyimpan dataset gabungan ke `data/processed/`, dan menyimpan hasil analisis ke `reports/`. Lokasi tersebut dapat diubah dengan environment variable `SKRIPSI_DATA_DIR` dan `SKRIPSI_OUTPUT_DIR`.
+Notebook otomatis membaca `data/raw/`, menulis dataset gabungan ke `data/processed/`, menyimpan tabel evaluasi ke `reports/`, dan mengekspor figur 300 dpi ke `reports/figures/`.
 
-## Artefak dan dokumentasi hasil
+## Dokumentasi
 
-- [Notebook analisis](notebooks/pemodelan_kemiskinan_jateng.ipynb)
-- [Dataset processed](data/processed/kemiskinan_jateng_2020_2024.csv)
-- [Ringkasan evaluasi model](reports/model_evaluation.md)
-- [Perbandingan model](reports/hasil_perbandingan_model.csv)
-- [Prediksi tahun 2024](reports/prediksi_kemiskinan_2024.csv)
-- [Permutation importance Random Forest](reports/permutation_importance_random_forest.csv)
-- [Analisis sensitivitas](reports/hasil_analisis_sensitivitas.csv)
-- [Audit sumber data](reports/audit_sumber_data.csv)
-
-## Sumber data
-
-Seluruh indikator diunduh dari tabel statistik resmi [BPS Provinsi Jawa Tengah](https://jateng.bps.go.id/) untuk periode 2020–2024. Daftar URL tabel per indikator dan tanggal akses tersedia di [dokumentasi data](data/README.md#sumber-data-bps).
+- [Notebook lengkap](notebooks/pemodelan_kemiskinan_jateng.ipynb)
+- [Dokumentasi dan sumber data](data/README.md)
+- [Dataset processed 2020–2025](data/processed/kemiskinan_jateng_2020_2025.csv)
+- [Evaluasi dan catatan metodologis](reports/model_evaluation.md)
+- [Indeks seluruh artefak](reports/README.md)
 
 ## Keterbatasan
 
-- Dataset hanya mencakup lima tahun dan satu provinsi.
-- Evaluasi akhir hanya menggunakan 35 observasi pada tahun 2024.
-- Model digunakan untuk tujuan prediksi dan eksplorasi, bukan untuk menyimpulkan kausalitas kebijakan.
-- Performa pada wilayah atau tahun di luar cakupan data perlu divalidasi kembali.
+- Dataset hanya mencakup enam tahun dan satu provinsi.
+- Holdout akhir terdiri dari 35 wilayah pada satu tahun, sehingga generalisasi ke tahun atau provinsi lain perlu diuji kembali.
+- Observasi merupakan data panel; cluster-robust standard error membantu inferensi MLR, tetapi tidak mengubah penelitian ini menjadi desain kausal.
+- Perubahan definisi atau revisi seri BPS dapat mengubah hasil ketika data diperbarui.
 
-## Lisensi dan data
+## Lisensi
 
-Kode dan dokumentasi proyek ini menggunakan [MIT License](LICENSE). Data mentah bersumber dari tabel statistik BPS dan disertakan untuk keperluan analisis akademik; hak atas data tetap mengikuti ketentuan sumber. Detail sumber dan penempatan data dapat dilihat di [data/README.md](data/README.md).
+Kode dan dokumentasi menggunakan [MIT License](LICENSE). Hak atas data mentah mengikuti ketentuan BPS sebagai penerbit sumber.
 
-## Kontak
+## Penulis
 
-Dibuat oleh [SYFDNNN](https://github.com/SYFDNNN).
+[SYFDNNN](https://github.com/SYFDNNN)

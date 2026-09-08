@@ -1,7 +1,7 @@
-﻿variabel,baris,kabupaten_kota,tahun_awal,tahun_akhir,duplikat_wilayah_tahun,nilai_kosong
-persentase_penduduk_miskin,175,35,2020,2024,0,0
-uhh,175,35,2020,2024,0,0
-hls,175,35,2020,2024,0,0
-rls,175,35,2020,2024,0,0
-pengeluaran_per_kapita_disesuaikan,175,35,2020,2024,0,0
-tpt,175,35,2020,2024,0,0
+﻿variabel,file_zip,sha256,baris,kabupaten_kota,tahun_awal,tahun_akhir,duplikat_wilayah_tahun,nilai_kosong
+persentase_penduduk_miskin,Kemiskinan 2020 -2025.zip,9d230922d51f10f95c85ee698d84b29af9ad963e61c4fe44b00d76919ab0df2b,210,35,2020,2025,0,0
+uhh,UHH 2020 - 2025.zip,2e5fa67be7de6090a462669b04e0cd55314133bf15cf054cd4de84c297e466c5,210,35,2020,2025,0,0
+hls,HLS 2020 - 2025.zip,fdfe3e933ba1703fdd3ba468a1e8bc7714dd9ca5b18a56e45ccef756fdb4f050,210,35,2020,2025,0,0
+rls,RLS 2020 - 2025.zip,364b5ae41e8d018e376cb38559cd494e292cde4201d53983b50200e63b99d9c0,210,35,2020,2025,0,0
+pengeluaran_per_kapita_disesuaikan,Pengeluaran Per kapita 2020 - 2025.zip,068f12b02847587a7416fc19f4643228e0e02214f5a6939d29a40010c229f49b,210,35,2020,2025,0,0
+tpt,TPT 2020 - 2025.zip,b0dcffb7dd5f13b770c26e4985f0ad88f2fbab923f5fd753f949a73fa40b74ec,210,35,2020,2025,0,0
