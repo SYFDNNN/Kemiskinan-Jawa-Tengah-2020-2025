@@ -68,7 +68,7 @@ Garis kemiskinan dan jumlah penduduk miskin tidak dipakai sebagai prediktor kare
 ## Struktur repository
 
 ```text
-Kemiskinan-Jawa-Tengah-2020-2024/
+Kemiskinan-Jawa-Tengah-2020-2025/
 ├── README.md
 ├── notebooks/
 │   └── pemodelan_kemiskinan_jateng.ipynb
@@ -88,13 +88,11 @@ Kemiskinan-Jawa-Tengah-2020-2024/
 └── LICENSE
 ```
 
-Nama repository GitHub masih memakai akhiran `2020-2024` agar URL lama tetap berfungsi, sedangkan seluruh data, analisis, dan dokumentasi di dalamnya telah diperbarui sampai 2025.
-
 ## Menjalankan analisis
 
 ```bash
-git clone https://github.com/SYFDNNN/Kemiskinan-Jawa-Tengah-2020-2024.git
-cd Kemiskinan-Jawa-Tengah-2020-2024
+git clone https://github.com/SYFDNNN/Kemiskinan-Jawa-Tengah-2020-2025.git
+cd Kemiskinan-Jawa-Tengah-2020-2025
 python -m venv .venv
 ```
 
