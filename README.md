@@ -117,8 +117,6 @@ jupyter notebook notebooks/pemodelan_kemiskinan_jateng.ipynb
 Notebook otomatis membaca `data/raw/`, menulis dataset gabungan ke `data/processed/`, menyimpan tabel evaluasi ke `reports/`, dan mengekspor figur 300 dpi ke `reports/figures/`.
 
 ## Dokumentasi
-
-- [Notebook lengkap](notebooks/pemodelan_kemiskinan_jateng.ipynb)
 - [Dokumentasi dan sumber data](data/README.md)
 - [Dataset processed 2020–2025](data/processed/kemiskinan_jateng_2020_2025.csv)
 - [Evaluasi dan catatan metodologis](reports/model_evaluation.md)
