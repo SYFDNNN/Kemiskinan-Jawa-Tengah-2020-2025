@@ -6,12 +6,12 @@ Dataset penelitian mencakup 35 kabupaten/kota di Jawa Tengah selama 2020–2025.
 
 | Variabel | Tabel statistik resmi |
 |---|---|
-| Persentase penduduk miskin | [Kemiskinan Menurut Kabupaten/Kota di Provinsi Jawa Tengah](https://jateng.bps.go.id/id/statistics-table/2/MzQjMg%3D%3D/kemiskinan.html) |
-| Umur harapan hidup (UHH) | [Umur Harapan Hidup Saat Lahir menurut Kabupaten/Kota](https://jateng.bps.go.id/id/statistics-table/2/MjAzNSMy/-metode-baru--umur-harapan-hidup-saat-lahir--uhh--hasil-long-form-sp2020-menurut-kabupaten-kota.html) |
-| Harapan lama sekolah (HLS) | [Harapan Lama Sekolah menurut Kabupaten/Kota](https://jateng.bps.go.id/id/statistics-table/2/MjQxMyMy/-indikator-strategis---ipm--harapan-lama-sekolah-menurut-kabupaten-kota-di-provinsi-jawa-tengah.html) |
-| Rata-rata lama sekolah (RLS) | [Rata-rata Lama Sekolah menurut Kabupaten/Kota](https://jateng.bps.go.id/id/statistics-table/2/MjQxNCMy/-indikator-strategis---ipm--rata-rata-lama-sekolah--menurut-kabupaten-kota-di-provinsi-jawa-tengah.html) |
-| Pengeluaran per kapita disesuaikan | [Pengeluaran per Kapita Disesuaikan menurut Kabupaten/Kota](https://jateng.bps.go.id/id/statistics-table/2/MjQxNSMy/-indikator-strategis-ipm-pengeluaran-per-kapita-disesuaikan-menurut-kabupaten-kota-di-provinsi-jawa-tengah.html) |
-| Tingkat pengangguran terbuka (TPT) | [TPT menurut Kabupaten/Kota di Provinsi Jawa Tengah](https://jateng.bps.go.id/id/statistics-table/2/NjQjMg%3D%3D/tingkat-pengangguran-terbuka--tpt--di-provinsi-jawa-tengah.html) |
+| Persentase penduduk miskin | [Kemiskinan Menurut Kabupaten/Kota di Provinsi Jawa Tengah]
+| Umur harapan hidup (UHH) | [Umur Harapan Hidup Saat Lahir menurut Kabupaten/Kota]
+| Harapan lama sekolah (HLS) | [Harapan Lama Sekolah menurut Kabupaten/Kota]
+| Rata-rata lama sekolah (RLS) | [Rata-rata Lama Sekolah menurut Kabupaten/Kota]
+| Pengeluaran per kapita disesuaikan | [Pengeluaran per Kapita Disesuaikan menurut Kabupaten/Kota]
+| Tingkat pengangguran terbuka (TPT) | [TPT menurut Kabupaten/Kota di Provinsi Jawa Tengah]
 
 Tanggal akses seluruh tabel: **8 September 2026**.
 
