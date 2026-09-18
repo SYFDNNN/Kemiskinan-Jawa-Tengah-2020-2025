@@ -65,54 +65,7 @@ Garis kemiskinan dan jumlah penduduk miskin tidak dipakai sebagai prediktor kare
 7. Membandingkan Dummy Baseline, MLR, dan Random Forest pada holdout 2025.
 8. Menghitung CI bootstrap MAE, permutation importance, diagnostik MLR, dan analisis sensitivitas.
 
-## Struktur repository
 
-```text
-Kemiskinan-Jawa-Tengah-2020-2025/
-├── README.md
-├── notebooks/
-│   └── pemodelan_kemiskinan_jateng.ipynb
-├── data/
-│   ├── raw/                         # Enam ZIP BPS 2020–2025
-│   ├── processed/
-│   │   └── kemiskinan_jateng_2020_2025.csv
-│   └── README.md                    # Sumber, data dictionary, dan validasi
-├── reports/
-│   ├── figures/                     # Delapan figur PNG 300 dpi
-│   ├── README.md                    # Indeks artefak hasil
-│   ├── model_evaluation.md
-│   └── *.csv                        # Tabel siap pakai untuk Bab IV
-├── requirements.txt
-├── .gitignore
-├── .gitattributes
-└── LICENSE
-```
-
-## Menjalankan analisis
-
-```bash
-git clone https://github.com/SYFDNNN/Kemiskinan-Jawa-Tengah-2020-2025.git
-cd Kemiskinan-Jawa-Tengah-2020-2025
-python -m venv .venv
-```
-
-Aktifkan environment dan instal dependensi:
-
-```bash
-# Windows PowerShell
-.venv\Scripts\Activate.ps1
-
-# Linux/macOS
-source .venv/bin/activate
-
-pip install -r requirements.txt
-```
-
-Jalankan notebook dari root repository:
-
-```bash
-jupyter notebook notebooks/pemodelan_kemiskinan_jateng.ipynb
-```
 
 Notebook otomatis membaca `data/raw/`, menulis dataset gabungan ke `data/processed/`, menyimpan tabel evaluasi ke `reports/`, dan mengekspor figur 300 dpi ke `reports/figures/`.
 
