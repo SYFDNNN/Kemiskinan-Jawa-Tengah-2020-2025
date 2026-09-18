@@ -70,8 +70,6 @@ Garis kemiskinan dan jumlah penduduk miskin tidak dipakai sebagai prediktor kare
 Notebook otomatis membaca `data/raw/`, menulis dataset gabungan ke `data/processed/`, menyimpan tabel evaluasi ke `reports/`, dan mengekspor figur 300 dpi ke `reports/figures/`.
 
 ## Dokumentasi
-- [Dokumentasi dan sumber data](data/README.md)
-- [Dataset processed 2020–2025](data/processed/kemiskinan_jateng_2020_2025.csv)
 - [Evaluasi dan catatan metodologis](reports/model_evaluation.md)
 - [Indeks seluruh artefak](reports/README.md)
 
